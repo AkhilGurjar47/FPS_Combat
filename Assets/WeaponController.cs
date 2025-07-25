@@ -16,11 +16,16 @@ public class WeaponController : MonoBehaviour
     private int currentBullets;
 
     public float fireRate = 0.2f;
+    public ParticleSystem muzzleFlash;
+    public GameObject bulletHole;
+    public AudioClip fireSound;
+    private AudioSource source;
     private float nextTimeFire = 0f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         currentBullets = maxBullets;
+        source = GetComponent<AudioSource>();
     }
     // Update is called once per frame
     void Update()
@@ -50,12 +55,16 @@ public class WeaponController : MonoBehaviour
             Debug.Log("Out Of Bullets");
             return;
         }
+        muzzleFlash.Play(true);
+        //source.PlayOneShot(fireSound);
         currentBullets--;
         Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 100f))
         {
             Debug.Log(hit.transform.name);
+            GameObject hole = Instantiate(bulletHole, hit.point, Quaternion.identity);
+            Destroy(hole, 10);
         }
     }
 }
