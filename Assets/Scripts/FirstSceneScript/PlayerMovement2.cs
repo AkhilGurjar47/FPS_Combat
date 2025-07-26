@@ -2,7 +2,7 @@ using Unity.Android.Gradle.Manifest;
 using Unity.Mathematics;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement2 : MonoBehaviour
 {
     private float gravity = -9.81f;
     private float jumpHeight = 3f;
