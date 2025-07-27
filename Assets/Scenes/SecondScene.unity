@@ -239,7 +239,8 @@ GameObject:
   - component: {fileID: 1086895666}
   - component: {fileID: 1086895665}
   - component: {fileID: 1086895664}
-  m_Layer: 0
+  - component: {fileID: 1086895668}
+  m_Layer: 7
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -335,6 +336,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1981216081}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1086895668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086895663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac087676600e4c048afbdcbe86778501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  promptMessage: Hey Buddy
 --- !u!1 &1295307660
 GameObject:
   m_ObjectHideFlags: 0
@@ -818,6 +832,22 @@ MonoBehaviour:
   cam: {fileID: 1750794074}
   xSensitivity: 30
   ySensitivity: 30
+--- !u!114 &1813659580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1813659567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5608bdda46bb4a3488e01dfb08829c96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 3
+  mask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &1937614113
 GameObject:
   m_ObjectHideFlags: 0
@@ -1150,6 +1180,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5545549560602089184, guid: e7d1d54e5410cac488bf1b65a6760298, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1813659579}
+    - targetCorrespondingSourceObject: {fileID: 5545549560602089184, guid: e7d1d54e5410cac488bf1b65a6760298, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1813659580}
   m_SourcePrefab: {fileID: 100100000, guid: e7d1d54e5410cac488bf1b65a6760298, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
