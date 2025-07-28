@@ -5,10 +5,12 @@ public class PlayerInteract : MonoBehaviour
     private Camera cam;
     [SerializeField] private float distance = 3f;
     [SerializeField] private LayerMask mask;
+    private InputManager inputManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         cam = GetComponent<PlayerLook>().cam;
+        inputManager = GetComponent<InputManager>();
     }
 
     // Update is called once per frame
@@ -20,6 +22,11 @@ public class PlayerInteract : MonoBehaviour
         {
             if (hitInfo.collider.GetComponent<Interactable>() != null)
             {
+                Interactable interactable = hitInfo.collider.GetComponent<Interactable>();
+                if (inputManager.onFoot.Interact.triggered)
+                {
+                    interactable.BaseInteract();
+                }
             }
         }
 
