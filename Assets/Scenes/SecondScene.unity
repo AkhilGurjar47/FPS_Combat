@@ -513,6 +513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promptMessage: Hey Buddy
+  door: {fileID: 508237822}
 --- !u!1 &1295307660
 GameObject:
   m_ObjectHideFlags: 0
