@@ -9,10 +9,17 @@ public class PlayerHealth : MonoBehaviour
     public float chipSpeed = 2f;
     public Image frontHealthBar;
     public Image backHealthBar;
+
+    public Image overlay;
+    public float duration;
+    public float fadeSpeed;
+
+    private float durationTimer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        health = maxHealth;    
+        health = maxHealth;
+        overlay.color = new Color(overlay.color.r, overlay.color.g, overlay.color.b, 0);
     }
 
     // Update is called once per frame
@@ -20,13 +27,17 @@ public class PlayerHealth : MonoBehaviour
     {
         health = Mathf.Clamp(health, 0, maxHealth);
         UpdateHealthUI();
-        if(Input.GetKeyDown(KeyCode.A))
+        if(overlay.color.a > 0)
         {
-            TakeDamage(Random.Range(5,10));
-        }
-        if(Input.GetKeyDown(KeyCode.Z))
-        {
-            RestoreHealth(Random.Range(5,10));
+            if (health < 30)
+                return;
+            durationTimer += Time.deltaTime;
+            if(durationTimer > duration)
+            {
+                float tempAlpha = overlay.color.a;
+                tempAlpha -= Time.deltaTime * fadeSpeed;
+                overlay.color = new Color(overlay.color.r, overlay.color.g, overlay.color.b, tempAlpha);
+            }
         }
     }
     public void UpdateHealthUI()
@@ -40,7 +51,6 @@ public class PlayerHealth : MonoBehaviour
             frontHealthBar.fillAmount = hFraction;
             backHealthBar.color = Color.red;
             lerpTimer += Time.deltaTime;
-            Debug.Log(lerpTimer);
             float percentComplete = lerpTimer / chipSpeed;
             percentComplete *= percentComplete;
             backHealthBar.fillAmount = Mathf.Lerp(fillB, hFraction, percentComplete);
@@ -59,6 +69,8 @@ public class PlayerHealth : MonoBehaviour
     {
         health -= damage;
         lerpTimer = 0f;
+        durationTimer = 0f;
+        overlay.color = new Color(overlay.color.r, overlay.color.g, overlay.color.b, 1);
     }
     public void RestoreHealth(float healAmount)
     {
