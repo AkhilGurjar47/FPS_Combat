@@ -3,11 +3,10 @@ using UnityEngine;
 public class StateMachine : MonoBehaviour
 {
     public BaseState activeState;
-    public patrolState patrolStat;
     public void Initialise()
     {
-        patrolStat = new patrolState();  
-        ChangeState(patrolStat);
+          
+        ChangeState(new patrolState());
     }
 
     private void Update()
